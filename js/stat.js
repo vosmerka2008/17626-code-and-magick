@@ -1,8 +1,5 @@
 'use strict';
 
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-
 var drawBackground = function (ctx) {
   ctx.fillStyle = 'white';
   ctx.shadowOffsetX = 10;
