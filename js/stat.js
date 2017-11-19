@@ -3,7 +3,7 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-var drawBackground = function(ctx) {
+var drawBackground = function (ctx) {
   ctx.fillStyle = 'white';
   ctx.shadowOffsetX = 10;
   ctx.shadowOffsetY = 10;
@@ -22,7 +22,7 @@ var drawBackground = function(ctx) {
   ctx.fill();
 };
 
-var drawBackgroundText = function(ctx) {
+var drawBackgroundText = function (ctx) {
   ctx.fillStyle = '#000000';
   ctx.font = '16px PT Mono';
 
@@ -30,13 +30,13 @@ var drawBackgroundText = function(ctx) {
   ctx.fillText('Список результатов: ', 120, 60);
 };
 
-var shadowReset = function(ctx) {
+var shadowReset = function (ctx) {
   ctx.shadowOffsetX = 0;
   ctx.shadowOffsetY = 0;
   ctx.shadowColor = 'transparent';
-}
+};
 
-var findMaxElement = function(times) {
+var findMaxElement = function (times) {
   var max = -1;
 
   for (var i = 0; i < times.length; i++) {
@@ -49,7 +49,7 @@ var findMaxElement = function(times) {
   return max;
 };
 
-var drawHistogram = function(ctx, names, times) {
+var drawHistogram = function (ctx, names, times) {
   var max = findMaxElement(times);
   var histogramHeight = 150;
   var step = histogramHeight / max - 0;
@@ -77,7 +77,7 @@ var drawHistogram = function(ctx, names, times) {
     ctx.fillText(names[i], x, yForNames);
     ctx.fillText(Math.floor(times[i]), x, y - indentForTimes);
   }
-}
+};
 
 window.renderStatistics = function (ctx, names, times) {
   drawBackground(ctx);
