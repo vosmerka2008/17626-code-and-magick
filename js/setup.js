@@ -14,6 +14,17 @@ var WIZARDS_COUNT = 4;
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
+var similarListElement = document.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+var setupOpen = document.querySelector('.setup-open');
+var setup = document.querySelector('.setup');
+var setupClose = setup.querySelector('.setup-close');
+var setupPlayer = setup.querySelector('.setup-player');
+var setupWizardCoat = setupPlayer.querySelector('.wizard-coat');
+var setupWizardEyes = setupPlayer.querySelector('.wizard-eyes');
+var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
+var setupForm = setup.querySelector('.setup-wizard-form');
+var userNameInput = setup.querySelector('.setup-user-name');
 
 var getRandomIndex = function (arrLength) {
   var rand = Math.floor(Math.random() * arrLength);
@@ -42,9 +53,6 @@ var getWizardsArray = function (wizardsCount) {
 
 var wizards = getWizardsArray(WIZARDS_COUNT);
 
-var similarListElement = document.querySelector('.setup-similar-list');
-var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
@@ -67,10 +75,6 @@ var renderFragment = function () {
 similarListElement.appendChild(renderFragment());
 
 //события
-
-var setupOpen = document.querySelector('.setup-open');
-var setup = document.querySelector('.setup');
-var setupClose = setup.querySelector('.setup-close');
 
 var onPopupEscPress = function(evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -107,25 +111,11 @@ setupClose.addEventListener('keydown', function(evt) {
   }
 });
 
-var setupSubmit = setup.querySelector('.setup-submit');
-var setupForm = setup.querySelector('.setup-wizard-form');
-var userNameInput = setup.querySelector('.setup-user-name');
-
-setupSubmit.addEventListener('click', function () {
-  setupForm.submit();
-});
-
-setupSubmit.addEventListener('click', function () {
-  if (evt.keyCode === ENTER_KEYCODE) {
-    setupForm.submit();
-  }
-});
-
-userNameInput.addEventListener('keydown', function(evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+document.body.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === ESC_KEYCODE && evt.target === userNameInput) {
     event.stopPropagation();
   }
-})
+});
 
 userNameInput.addEventListener('invalid', function (evt) {
   if (userNameInput.validity.tooShort) {
@@ -137,41 +127,24 @@ userNameInput.addEventListener('invalid', function (evt) {
   }
 });
 
-var setupPlayer = setup.querySelector('.setup-player');
-var setupWizardCoat = setupPlayer.querySelector('.wizard-coat');
-var setupWizardEyes = setupPlayer.querySelector('.wizard-eyes');
-var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
-
-/*var onSetupPlayerClick = function (evt) {
-  var targetElement = evt.target;
-  if (targetElement === setupWizardCoat) {
-    targetElement.style.fill = WIZARD_COATS[getRandomIndex(WIZARD_COATS.length)];
-  } else if (targetElement === setupWizardEyes) {
-    targetElement.style.fill = WIZARD_EYES[getRandomIndex(WIZARD_COATS.length)];
-  } else if (targetElement === setupFireball) {
-    targetElement.style.background = FIREBALL[getRandomIndex(WIZARD_COATS.length)];
-  }
-};
-*/
-
 var changeCoatColor = function () {
   setupWizardCoat.addEventListener('click', function () {
   setupWizardCoat.style.fill = WIZARD_COATS[getRandomIndex(WIZARD_COATS.length)];
   });
 };
-changeCoatColor();
 
 var changeEyesColor = function () {
   setupWizardEyes.addEventListener('click', function () {
   setupWizardEyes.style.fill = WIZARD_EYES[getRandomIndex(WIZARD_EYES.length)];
   });
 };
-changeEyesColor();
 
 var changeFireballColor = function () {
   setupFireball.addEventListener('click', function () {
-  //setupFireball.setAttribute('style', 'background-color: ' +  FIREBALL_COLORS[getRandomIndex(FIREBALL_COLORS.length)]);
   setupFireball.style.background = FIREBALL_COLORS[getRandomIndex(FIREBALL_COLORS.length)];
   });
 };
+
+changeCoatColor();
+changeEyesColor();
 changeFireballColor();
