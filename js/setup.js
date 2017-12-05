@@ -75,7 +75,7 @@ similarListElement.appendChild(renderFragment());
 
 //  события
 
-var onPopupEscPress = function  (evt) {
+var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
   }
@@ -90,11 +90,11 @@ var closePopup = function () {
   setup.classList.add('hidden');
 };
 
-setupOpen.addEventListener('click', function  () {
+setupOpen.addEventListener('click', function () {
   openPopup();
 });
 
-setupOpen.addEventListener('keydown', function  (evt) {
+setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     openPopup();
   }
@@ -110,7 +110,7 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-document.body.addEventListener('keydown', function  (evt) {
+document.body.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ESC_KEYCODE && evt.target === userNameInput) {
     event.stopPropagation();
   }
