@@ -141,9 +141,3 @@ var changeFireballColor = function () {
 setupWizardCoat.addEventListener('click', changeCoatColor);
 setupWizardEyes.addEventListener('click', changeEyesColor);
 setupFireball.addEventListener('click', changeFireballColor);
-
-/*changeCoatColor();
-changeEyesColor();
-changeFireballColor();*/
-
-
