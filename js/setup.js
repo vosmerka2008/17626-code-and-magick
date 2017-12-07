@@ -127,23 +127,23 @@ userNameInput.addEventListener('invalid', function () {
 });
 
 var changeCoatColor = function () {
-  setupWizardCoat.addEventListener('click', function () {
-    setupWizardCoat.style.fill = WIZARD_COATS[getRandomIndex(WIZARD_COATS.length)];
-  });
+  setupWizardCoat.style.fill = WIZARD_COATS[getRandomIndex(WIZARD_COATS.length)];
 };
 
 var changeEyesColor = function () {
-  setupWizardEyes.addEventListener('click', function () {
-    setupWizardEyes.style.fill = WIZARD_EYES[getRandomIndex(WIZARD_EYES.length)];
-  });
+  setupWizardEyes.style.fill = WIZARD_EYES[getRandomIndex(WIZARD_EYES.length)];
 };
 
 var changeFireballColor = function () {
-  setupFireball.addEventListener('click', function () {
-    setupFireball.style.background = FIREBALL_COLORS[getRandomIndex(FIREBALL_COLORS.length)];
-  });
+  setupFireball.style.background = FIREBALL_COLORS[getRandomIndex(FIREBALL_COLORS.length)];
 };
 
-changeCoatColor();
+setupWizardCoat.addEventListener('click', changeCoatColor);
+setupWizardEyes.addEventListener('click', changeEyesColor);
+setupFireball.addEventListener('click', changeFireballColor);
+
+/*changeCoatColor();
 changeEyesColor();
-changeFireballColor();
+changeFireballColor();*/
+
+
