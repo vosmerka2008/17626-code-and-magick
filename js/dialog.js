@@ -53,15 +53,15 @@
     }
   });
 
-  setupWizardCoat.addEventListener('click', function() {
+  setupWizardCoat.addEventListener ('click', function() {
     window.setup.changeCoatColor();
   });
 
-  setupWizardEyes.addEventListener('click', function() {
+  setupWizardEyes.addEventListener ('click', function() {
     window.setup.changeEyesColor();
   });
 
-  setupFireball.addEventListener('click', function() {
+  setupFireball.addEventListener ('click', function() {
     window.setup.changeFireballColor();
   });
 })();

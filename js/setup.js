@@ -15,7 +15,6 @@
   var setupWizardCoat = setupPlayer.querySelector('.wizard-coat');
   var setupWizardEyes = setupPlayer.querySelector('.wizard-eyes');
   var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
-  var userNameInput = setup.querySelector('.setup-user-name');
 
   document.querySelector('.setup-similar').classList.remove('hidden');
 
