@@ -23,17 +23,13 @@
     setup.classList.add('hidden');
   };
 
-  setupOpen.addEventListener('click', function () {
-    openPopup();
-  });
+  setupOpen.addEventListener('click', openPopup);
 
   setupOpen.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, openPopup);
   });
 
-  setupClose.addEventListener('click', function () {
-    closePopup();
-  });
+  setupClose.addEventListener('click', closePopup);
 
   document.body.addEventListener('keydown', function (evt) {
     if (evt.target === userNameInput) {
@@ -53,15 +49,51 @@
     }
   });
 
-  setupWizardCoat.addEventListener('click', function () {
-    window.setup.changeCoatColor();
-  });
+  setupWizardCoat.addEventListener('click', window.setup.changeCoatColor);
 
-  setupWizardEyes.addEventListener('click', function () {
-    window.setup.changeEyesColor();
-  });
+  setupWizardEyes.addEventListener('click', window.setup.changeEyesColor);
 
-  setupFireball.addEventListener('click', function () {
-    window.setup.changeFireballColor();
+  setupFireball.addEventListener('click', window.setup.changeFireballColor);
+
+  var dialogHandle = setup.querySelector('.setup-user-pic');
+
+  dialogHandle.addEventListener('mousedown', function (evt) {
+  evt.preventDefault();
+
+  var startCoords = {
+    x: evt.clientX,
+    y: evt.clientY
+  };
+
+  var onMouseMove = function (moveEvt) {
+    moveEvt.preventDefault();
+    console.log('clientX =' + moveEvt.clientX  + ' clientY =' + moveEvt.clientY);
+    var shift = {
+      x: startCoords.x - moveEvt.clientX,
+      y: startCoords.y - moveEvt.clientY
+    };
+
+    startCoords = {
+      x: moveEvt.clientX,
+      y: moveEvt.clientY
+    };
+
+    if (moveEvt.clientY < 0 || moveEvt.clientY > window.innerHeight) {
+      setup.style.top = 0 + 'px';
+    } else {
+      setup.style.top = (setup.offsetTop - shift.y) + 'px';
+      setup.style.left = (setup.offsetLeft - shift.x) + 'px';
+    };
+  };
+
+  var onMouseUp = function (upEvt) {
+    upEvt.preventDefault();
+
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  };
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
   });
 })();

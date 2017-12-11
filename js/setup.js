@@ -19,19 +19,15 @@
   document.querySelector('.setup-similar').classList.remove('hidden');
 
   var getRandomIndex = function (arrLength) {
-    var rand = Math.floor(Math.random() * arrLength);
-
-    return rand;
+    return Math.floor(Math.random() * arrLength);
   };
 
   var getNewWizard = function () {
-    var wizard = {
+    return {
       name: WIZARD_NAMES[getRandomIndex(WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomIndex(WIZARD_SURNAMES.length)],
       coatColor: WIZARD_COATS[getRandomIndex(WIZARD_COATS.length)],
       eyesColor: WIZARD_EYES[getRandomIndex(WIZARD_EYES.length)]
     };
-
-    return wizard;
   };
 
   var getWizardsArray = function (wizardsCount) {
@@ -79,4 +75,47 @@
       setupFireball.style.background = FIREBALL_COLORS[getRandomIndex(FIREBALL_COLORS.length)];
     }
   };
+
+
+  var shopElement = document.querySelector('.setup-artifacts-shop'); // магазин
+  var draggedItem = null; // элемент, который перетаскиваем
+  var draggedItemCopy = null;
+  var artifactsElement = document.querySelector('.setup-artifacts'); // рюкзак
+
+  //  начало перетаскивания: что перетаскиваем
+  shopElement.addEventListener('dragstart', function (evt) {
+    if (evt.target.tagName.toLowerCase() === 'img') {
+      draggedItem = evt.target;
+      draggedItemCopy = draggedItem.cloneNode(true);
+      evt.dataTransfer.setData('text/plain', evt.target.alt);
+    }
+  });
+
+  //  отменить запрет браузера на перетаскивание
+  artifactsElement.addEventListener('dragover', function (evt) {
+    evt.preventDefault();
+    return false;
+  });
+
+  //  бросить элемент в цель
+  artifactsElement.addEventListener('drop', function (evt) {
+    evt.target.style.backgroundColor = '';
+    evt.target.style.outline = '';
+    evt.target.appendChild(draggedItemCopy);
+    evt.preventDefault();
+  });
+
+  //  элемент над целью
+  artifactsElement.addEventListener('dragenter', function (evt) {
+    evt.target.style.backgroundColor = 'yellow';
+    evt.target.style.outline = '2px dashed red';
+    evt.preventDefault();
+  });
+
+  // мимо цели
+  artifactsElement.addEventListener('dragleave', function (evt) {
+    evt.target.style.backgroundColor = '';
+    evt.target.style.outline = '';
+    evt.preventDefault();
+  });
 })();
