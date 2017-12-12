@@ -76,7 +76,7 @@
     }
   };
 
-
+  //  перетаскивание
   var shopElement = document.querySelector('.setup-artifacts-shop'); // магазин
   var draggedItem = null; // элемент, который перетаскиваем
   var draggedItemCopy = null;

@@ -57,6 +57,7 @@
 
   var dialogHandle = setup.querySelector('.setup-user-pic');
 
+  //  перетаскивание
   dialogHandle.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
