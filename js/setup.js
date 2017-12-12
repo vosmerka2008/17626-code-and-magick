@@ -91,6 +91,13 @@
     }
   });
 
+  artifactsElement.addEventListener('dragstart', function (evt) {
+    if (evt.target.tagName.toLowerCase() === 'img') {
+      draggedItemCopy = evt.target;
+      evt.dataTransfer.setData('text/plain', evt.target.alt);
+    }
+  });
+
   //  отменить запрет браузера на перетаскивание
   artifactsElement.addEventListener('dragover', function (evt) {
     evt.preventDefault();
