@@ -48,16 +48,41 @@
       userNameInput.setCustomValidity('');
     }
   });
+  window.dialog = {
+  WIZARD_COATS: ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'],
+  WIZARD_EYES: ['black', 'red', 'blue', 'yellow', 'green'],
+  FIREBALL_COLORS: ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
+  };
+  var changeCoatColor = function () {
+    window.colorizeElement(setupWizardCoat, window.dialog.WIZARD_COATS, fillElement);
+  };
 
-  setupWizardCoat.addEventListener('click', window.setup.changeCoatColor);
+  var changeEyesColor = function () {
+    window.colorizeElement(setupWizardEyes, window.dialog.WIZARD_EYES, fillElement);
+  };
 
-  setupWizardEyes.addEventListener('click', window.setup.changeEyesColor);
+  var changeFireballColor = function () {
+    window.colorizeElement(setupFireball, window.dialog.FIREBALL_COLORS, changeElementBackground);
+  };
 
-  setupFireball.addEventListener('click', window.setup.changeFireballColor);
 
-  var dialogHandle = setup.querySelector('.setup-user-pic');
+  var fillElement = function (element, color) {
+    element.style.fill = color;
+  };
+
+  var changeElementBackground = function (element, color) {
+    element.style.background = color;
+  };
+
+  setupWizardCoat.addEventListener('click', changeCoatColor);
+
+  setupWizardEyes.addEventListener('click', changeEyesColor);
+
+  setupFireball.addEventListener('click', changeFireballColor);
 
   //  перетаскивание
+  var dialogHandle = setup.querySelector('.setup-user-pic');
+
   dialogHandle.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
