@@ -15,11 +15,6 @@
   var setupWizardCoat = setupPlayer.querySelector('.wizard-coat');
   var setupWizardEyes = setupPlayer.querySelector('.wizard-eyes');
   var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
-  window.setup = {
-    WIZARD_COATS: WIZARD_COATS,
-    WIZARD_EYES: WIZARD_EYES,
-    FIREBALL_COLORS: FIREBALL_COLORS
-  };
 
   document.querySelector('.setup-similar').classList.remove('hidden');
 
