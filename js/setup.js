@@ -9,7 +9,6 @@
   var WIZARDS_COUNT = 4;
   var similarListElement = document.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-  var setup = document.querySelector('.setup');
 
   document.querySelector('.setup-similar').classList.remove('hidden');
 
