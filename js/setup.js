@@ -10,7 +10,6 @@
   var similarListElement = document.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
   var setup = document.querySelector('.setup');
-  var setupPlayer = setup.querySelector('.setup-player');
 
   document.querySelector('.setup-similar').classList.remove('hidden');
 
