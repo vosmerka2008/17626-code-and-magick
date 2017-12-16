@@ -50,13 +50,11 @@
   });
 
   var changeCoatColor = function () {
-    var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-    window.colorizeElement(setupWizardCoat, WIZARD_COATS, fillElement);
+    window.colorizeElement(setupWizardCoat, window.setup.WIZARD_COATS, fillElement);
   };
 
   var changeEyesColor = function () {
-    var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
-    window.colorizeElement(setupWizardEyes, WIZARD_EYES, fillElement);
+    window.colorizeElement(setupWizardEyes, window.setup.WIZARD_EYES, fillElement);
   };
 
   var changeFireballColor = function () {
