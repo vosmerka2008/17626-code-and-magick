@@ -6,6 +6,7 @@
   var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
   var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
   var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
+
   var WIZARDS_COUNT = 4;
   var similarListElement = document.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
@@ -13,20 +14,16 @@
   document.querySelector('.setup-similar').classList.remove('hidden');
 
   window.setup = {
-    getRandomIndex: function (arr) {
+    getRandomValue: function (arr) {
       return arr[Math.floor(Math.random() * arr.length)];
-    },
-
-    getRandomValue: function (arrLength) {
-      return Math.floor(Math.random() * arrLength);
     }
   };
 
   var getNewWizard = function () {
     return {
-      name: WIZARD_NAMES[window.setup.getRandomValue(WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[window.setup.getRandomValue(WIZARD_SURNAMES.length)],
-      coatColor: WIZARD_COATS[window.setup.getRandomValue(WIZARD_COATS.length)],
-      eyesColor: WIZARD_EYES[window.setup.getRandomValue(WIZARD_EYES.length)]
+      name: window.setup.getRandomValue(WIZARD_NAMES) + ' ' + window.setup.getRandomValue(WIZARD_SURNAMES),
+      coatColor: window.setup.getRandomValue(WIZARD_COATS),
+      eyesColor: window.setup.getRandomValue(WIZARD_EYES)
     };
   };
 
