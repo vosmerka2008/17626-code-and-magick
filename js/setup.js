@@ -16,14 +16,6 @@
     WIZARD_EYES: ['black', 'red', 'blue', 'yellow', 'green']
   };
 
-  var getNewWizard = function () {
-    return {
-      name: window.setup.getRandomValue(WIZARD_NAMES) + ' ' + window.setup.getRandomValue(WIZARD_SURNAMES),
-      coatColor: window.setup.getRandomValue(window.setup.WIZARD_COATS),
-      eyesColor: window.setup.getRandomValue(window.setup.WIZARD_EYES)
-    };
-  };
-
   var userDialog = document.querySelector('.setup');
   userDialog.classList.remove('hidden');
 
