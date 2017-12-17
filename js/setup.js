@@ -24,17 +24,6 @@
     };
   };
 
-  var getWizardsArray = function (wizardsCount) {
-    var wizards = [];
-    for (var i = 0; i < wizardsCount; i++) {
-      wizards.push(getNewWizard());
-    }
-
-    return wizards;
-  };
-
-  //var newWizards = getWizardsArray(WIZARDS_COUNT);
-
   var userDialog = document.querySelector('.setup');
   userDialog.classList.remove('hidden');
 
