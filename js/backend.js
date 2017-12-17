@@ -12,8 +12,6 @@
       var error;
       switch (xhr.status) {
         case 200:
-        console.log('xhr.response');
-        console.log(xhr.response);
           onSuccess(xhr.response);
           break;
         case 400:
@@ -40,18 +38,18 @@
       onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
 
-    xhr.timeout = 100;
+    xhr.timeout = 30000;
 
     return xhr;
   };
 
   window.backend = {
-  save: function (data, onSuccess, onError) {
-    var xhr = setup(onSuccess, onError);
+    save: function (data, onSuccess, onError) {
+      var xhr = setup(onSuccess, onError);
 
-    xhr.open('POST', SERVER_URL);
-    xhr.send(data);
-  },
+      xhr.open('POST', SERVER_URL);
+      xhr.send(data);
+    },
 
     load: function (onSuccess, onError) {
       var xhr = setup(onSuccess, onError);

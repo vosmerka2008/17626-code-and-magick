@@ -33,7 +33,7 @@
     return wizards;
   };
 
-  var wizards = getWizardsArray(WIZARDS_COUNT);
+  //var newWizards = getWizardsArray(WIZARDS_COUNT);
 
   var userDialog = document.querySelector('.setup');
   userDialog.classList.remove('hidden');
@@ -48,10 +48,10 @@
     return wizardElement;
   };
 
-  var renderFragment = function (wizards) {
+  var renderFragment = function (newWizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < WIZARDS_COUNT; i++) {
-      fragment.appendChild(renderWizard(wizards[i]));
+      fragment.appendChild(renderWizard(newWizards[i]));
     }
 
     return fragment;
